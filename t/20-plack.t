@@ -10,7 +10,7 @@ use Carp::Always;
 use t::lib::Test;
 t::lib::Test::setup();
 
-use Dancer2;    # set, config
+use Dancer2;    # importing: set, config
 
 #set log => 'debug';
 #set startup_info => 0;
