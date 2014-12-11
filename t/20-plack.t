@@ -10,18 +10,18 @@ use Carp::Always;
 use t::lib::Test;
 t::lib::Test::setup();
 
-use Dancer qw(:tests);
+use Dancer2;
 
 #set log => 'debug';
 #set startup_info => 0;
-Dancer::set( appdir => getcwd() );
+set( appdir => getcwd() );
 
-is Dancer::config->{'appdir'}, getcwd(), 'appdir';
-is Dancer::config->{'mymaven_yml'}, 'config/mymaven.yml', 'mymaven';
+is config->{'appdir'}, getcwd(), 'appdir';
+is config->{'mymaven_yml'}, 'config/mymaven.yml', 'mymaven';
 
 use Perl::Maven;
 
-my $app = Dancer::Handler->psgi_app;
+my $app = Dancer2->psgi_app;
 is( ref $app, 'CODE', 'Got app' );
 
 test_psgi $app, sub {
